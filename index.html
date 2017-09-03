@@ -11,17 +11,20 @@
 
 	<header role="banner">
 		<h1>Capstone Project</h1>
-		<form>
-			<input class="js-query" placeholder="Search" type="text" name="query">
+		<form class="js-search">
+			<input class="js-query" placeholder="Search" type="text" name="query" required>
 			<button type="submit">Search</button>
 		</form>
 	</header>
 
-	<section class="js-results">
-		
-	</section>
+	<section aria-live="assertive">
+		<div class="js-results">
+			
+		</div>
+	</section>	
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+
 </body>
 </html>

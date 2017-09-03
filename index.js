@@ -17,18 +17,18 @@ function getDataFromYoutubeApi (searchTerm, callback) {
 }
 
 function renderYTResult (result) {
-	$('.js-results').html("");
+	$('.js-results').html(" ");
 	result.items.forEach((item) => {
-		$('.js-results').append(`
-			<div class="youtube">
-				<div class="yt-thumb">
-					<p>${item.snippet.title}</p>
-				</div>
-				<div class="yt-info">
-					<a href="${YOUTUBE_WATCH_URL + item.id.videoID}" target="_blank"><img src="${item.snippet.thumbnails.default.url}" alt="Link to Youtube video titled ${item.snippet.title}"></a>
-				</div>
-			</div>
-			`);
+	$('.js-results').append(`
+	<div class="youtube">
+		<div class="yt-thumb">
+			<p>${item.snippet.title}</p>
+		</div>
+		<div class="yt-info">
+			<a href="${YOUTUBE_WATCH_URL + item.id.videoID}" target="_blank"><img src="${item.snippet.thumbnails.default.url}" alt="Link to Youtube video titled ${item.snippet.title}"></a>
+		</div>
+	</div>
+	`);
 	});
 }
 
@@ -37,12 +37,12 @@ function clearYTResult () {
 }
 
 function watchSubmit () {
-	$('.js-results').submit((event) => {
-		event.preventDefault();
-		const queryTarget = $(event.current).find('.js-query');
-		const query = queryTarget.val();
-		queryTarget.val("");
-		getDataFromYoutubeApi(query, renderYTResult);
+	$('.js-search').submit((event) => {
+	event.preventDefault();
+	const queryTarget = $(event.currentTarget).find('.js-query');
+	const query = queryTarget.val();
+	queryTarget.val(" ");
+	getDataFromYoutubeApi(query, renderYTResult);
 	});
 }
 
