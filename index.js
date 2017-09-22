@@ -20,8 +20,9 @@ function makeYoutubeQuery (searchTerm, task) {
 	const query = {
 		part: 'snippet',
 		key: YOUTUBE_API_KEY,
-		q: 'info about' + searchTerm,
+		q: 'info about ' + searchTerm,
 		maxResults: 3,
+		relevanceLanguage: 'en'
 	}; 
 	if (task === 'next') {
 		query.pageToken = NEXT_TOKEN;
@@ -100,7 +101,7 @@ $(function () {
 //Get Wikipedia API data
 
 function getDataFromWikiApi(title) {
-        var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cpageimages&redirects=1&piprop=thumbnail%7Cname%7Coriginal&exsentences=3&list=&titles=" + title + "&callback=?";
+        var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cpageimages&redirects=1&piprop=thumbnail%7Cname%7Coriginal&exsentences=5&list=&titles=" + title + "&callback=?";
         var queryData = "";
         $.ajax({
             url: url,
