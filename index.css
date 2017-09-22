@@ -153,10 +153,10 @@ a {
 .wiki-pic {
 	float: left;
 	margin-right: 20px;
-  	margin-bottom: 20px;
- 	margin-top: 20px;
-  	width: 250px;
-  	border: 1px solid Gainsboro;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	width: 250px;
+	border: 1px solid Gainsboro;
 	box-shadow: 1px 1px 1px;
 	overflow: hidden;
 }

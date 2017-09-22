@@ -37,6 +37,8 @@ function getDataFromYoutubeApi (query, callback) {
 	$.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
 
+//Render Youtube Results
+
 function renderYTResult (result) {
 	PREV_TOKEN = result.prevPageToken;
 	NEXT_TOKEN = result.nextPageToken;
@@ -98,50 +100,49 @@ $(function () {
 	startSearch();
 });
 
-//Get Wikipedia API data
+//Get Wikipedia API data and render results
 
 const WIKI_URL = "https://en.wikipedia.org/wiki/";
 
 function getDataFromWikiApi(title) {
-        var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cpageimages&redirects=1&piprop=thumbnail%7Cname%7Coriginal&exsentences=5&list=&titles=" + title + "&callback=?";
-        var queryData = "";
-        $.ajax({
-            url: url,
-            data: queryData,
-            dataType: 'json',
-            success: function renderWikiResult (data) {
-            	$('.wiki-results').html(" ");
-                var pages = data.query.pages;
-                console.log(pages);
-                for (var id in pages) {
-                	if (pages[id].original !== undefined && pages[id].extract !== undefined) {
-                		pages[id].original = pages[id].original ? pages[id].original:{source:""};
-                        	$('.wiki-results').append(`
-                        		<div class="wiki-row">
-                        			<div class="container">
-                        				<a href="${pages[id].original.source}" target="_blank"><img class="highlight wiki-pic" src="${pages[id].original.source}" alt="Main page image for ${pages[id].title} search"></a>
-                        			</div>
-                        			<h2 class="header-wiki">${pages[id].title}</h2>
-                        			<p>${pages[id].extract}</p>
-                        			<a href="${WIKI_URL + title}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
-                        		</div>`);
-                	} 
-	                else if (pages[id].extract !== undefined) {
-	                	$('.wiki-results').append(`
-                        		<div class="wiki-row">
-                        			<h2 class="header-wiki">${pages[id].title}</h2>
-                        			<p>${pages[id].extract}</p>
-                        			<a href="https://en.wikipedia.org/wiki/ + ${pages[id]}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
-                        		</div>`);
-	                }
-	                else {
-	                    $('.wiki-results').append(`<h2>${pages[id].title}</h2>`);
-	                    $('.wiki-results').append('<p>No results were found. Check for any spelling errors and try spelling out acronyms.</p>');
-	                }
-	            }
-            }
+	var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cpageimages&redirects=1&piprop=thumbnail%7Cname%7Coriginal&exsentences=5&list=&titles=" + title + "&callback=?";
+	var queryData = "";
+	$.ajax({
+		url: url,
+		data: queryData,
+		dataType: 'json',
+		success: function renderWikiResult (data) {
+			$('.wiki-results').html(" ");
+			var pages = data.query.pages;
+			for (var id in pages) {
+				if (pages[id].original !== undefined && pages[id].extract !== undefined) {
+					pages[id].original = pages[id].original ? pages[id].original:{source:""};
+					 	$('.wiki-results').append(`
+					 		<div class="wiki-row">
+					 			<div class="container">
+					 				<a href="${pages[id].original.source}" target="_blank"><img class="highlight wiki-pic" src="${pages[id].original.source}" alt="Main page image for ${pages[id].title} search"></a>
+					 			</div>
+					 			<h2 class="header-wiki">${pages[id].title}</h2>
+					 			<p>${pages[id].extract}</p>
+					 			<a href="${WIKI_URL + title}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
+					 		</div>`);
+				} 
+				else if (pages[id].extract !== undefined) {
+					$('.wiki-results').append(`
+					 		<div class="wiki-row">
+					 			<h2 class="header-wiki">${pages[id].title}</h2>
+					 			<p>${pages[id].extract}</p>
+					 			<a href="https://en.wikipedia.org/wiki/ + ${pages[id]}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
+					 		</div>`);
+				}
+				else {
+					$('.wiki-results').append(`<h2>${pages[id].title}</h2>`);
+					$('.wiki-results').append('<p>No results were found. Check for any spelling errors and try spelling out acronyms.</p>');
+				}
+			}
+		}
 
-        });
+	});
 }
 
 
@@ -162,6 +163,8 @@ function getDataFromGoogleBooksApi (searchTerm, callback) {
 	};
 	$.getJSON(url, query, callback);
 }
+
+//Render Google Books Results
 
 function renderGBResult (result) {
 	$('.gb-results').html(" ");
