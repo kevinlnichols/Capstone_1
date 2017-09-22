@@ -56,9 +56,9 @@ a {
 }
 
 .background-1 {
-	background-image: url("https://farm5.staticflickr.com/4437/37133493902_d5a8f078d3_o.jpg");
+	background-image: url("https://farm5.staticflickr.com/4500/36538684114_aa8ab93f42_k.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: cover;
 	height: 350px;
 }
 
@@ -269,4 +269,11 @@ width: calc(100% - 10px);
 	width: 45%;
 }
 
+}
+
+@media screen and (min-width: 1500px) {
+	.wiki-row {
+		margin-left: 60px;
+		margin-right: 120px;
+	}
 }
