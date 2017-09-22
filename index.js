@@ -100,6 +100,8 @@ $(function () {
 
 //Get Wikipedia API data
 
+const WIKI_URL = "https://en.wikipedia.org/wiki/";
+
 function getDataFromWikiApi(title) {
         var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cpageimages&redirects=1&piprop=thumbnail%7Cname%7Coriginal&exsentences=5&list=&titles=" + title + "&callback=?";
         var queryData = "";
@@ -121,6 +123,7 @@ function getDataFromWikiApi(title) {
                         			</div>
                         			<h2 class="header-wiki">${pages[id].title}</h2>
                         			<p>${pages[id].extract}</p>
+                        			<a href="${WIKI_URL + title}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
                         		</div>`);
                 	} 
 	                else if (pages[id].extract !== undefined) {
@@ -128,6 +131,7 @@ function getDataFromWikiApi(title) {
                         		<div class="wiki-row">
                         			<h2 class="header-wiki">${pages[id].title}</h2>
                         			<p>${pages[id].extract}</p>
+                        			<a href="https://en.wikipedia.org/wiki/ + ${pages[id]}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
                         		</div>`);
 	                }
 	                else {
