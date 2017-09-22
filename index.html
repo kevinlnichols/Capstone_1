@@ -4,21 +4,41 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="index.css">
-	<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 	<title>API Capstone|Thinkful</title>
 </head>
 <body>
 
-	<header role="banner">
-		<h1>Capstone Project</h1>
-		<form class="js-search">
-			<input class="js-query" placeholder="Search" type="text" name="query" required>
-			<button type="submit">Search</button>
-		</form>
-	</header>
+	<section class="background-1 background-2">
+		<div class="layer">
+			<header class="title" role="banner">
+				<h1>API Capstone Project</h1>
+				<p class="intro">API capstone project for the Flexible Web Development course. Enter a search term below.</p>
+			</header>
+		</div>
+	</section>
 
-	<section aria-live="assertive">
-		<div class="js-results">
+	<section>
+		<div class="start" id="start">
+				<button class="highlight start-submit start-button" id="start-button">Start</button>
+			</div>
+
+			<div id="search" class="search hidden">
+				<form class="js-search">
+					<input class="js-query" placeholder="Search..." type="text" name="query" id="search-term" aria-label="Search">
+					<button class="highlight start-submit" id="js-search" type="submit">Submit</button>
+				</form>
+			</div>
+	</section>
+
+	<section id="results" class="results hidden" aria-live="assertive">
+		<div class="box-1 wiki-results">
+			
+		</div>
+		<div class="box-2 yt-results">
+			
+		</div>
+		<div class="box-3 gb-results">
 			
 		</div>
 	</section>	
