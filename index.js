@@ -132,7 +132,7 @@ function getDataFromWikiApi(title) {
 					 		<div class="wiki-row">
 					 			<h2 class="header-wiki">${pages[id].title}</h2>
 					 			<p>${pages[id].extract}</p>
-					 			<a href="https://en.wikipedia.org/wiki/ + ${pages[id]}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
+					 			<a href="${WIKI_URL + title}" target="_blank"><div class="highlight browse">Read more on Wikipedia</div></a>
 					 		</div>`);
 				}
 				else {
